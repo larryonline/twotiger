@@ -35,8 +35,8 @@ class TwoTigerSpider(scrapy.Spider):
         item["type"] = response.css("div.projectName em.doubt_no ::text").extract_first();
 
         volumeInfo = response.css("div.lijitouzi");
-        item["volume"] = volumeInfo.css("p.mt25 > span.fr").extract_first();
-        item["profit"] = volumeInfo.css("p > span#yjsy").extract_first();
+        item["volume"] = volumeInfo.css("p.mt25 > span.fr ::text").extract_first();
+        item["profit"] = volumeInfo.css("p > span#yjsy ::text").extract_first();
 
         yield item
 
