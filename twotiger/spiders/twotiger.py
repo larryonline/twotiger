@@ -30,7 +30,7 @@ class TwoTigerSpider(scrapy.Spider):
 
         nameInfo = response.css("div.nameInfo");
         item["name"] = nameInfo.css("p ::text").extract_first();
-        item["discount"] = nameInfo.css("em.dz").extract_first() ? 1 : 0;
+        item["discount"] = 1 if nameInfo.css("em.dz").extract_first() else 0;
 
         item["type"] = response.css("div.projectName em.doubt_no ::text").extract_first();
 
