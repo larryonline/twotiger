@@ -29,14 +29,14 @@ class TwoTigerSpider(scrapy.Spider):
         item = {};
 
         nameInfo = response.css("div.nameInfo");
-        item["name"] = nameInfo.css("p").extract_first();
-        item["discount"] = nameInfo.css("em.dz").extract_first();
+        item["name"] = nameInfo.css("p ::text").extract_first();
+        item["discount"] = nameInfo.css("em.dz").extract_first() ? 1 : 0;
 
-        item["type"] = response.css("div.projectName em.doubt_no").extract_first();
+        item["type"] = response.css("div.projectName em.doubt_no ::text").extract_first();
 
         volumeInfo = response.css("div.lijitouzi");
-        item["volume"] = volumeInfo.css("p > span.fr").extract_first();
-        item["profit"] = volumeInfo.css("p > span.yjsy").extract_first();
+        item["volume"] = volumeInfo.css("p.mt25 > span.fr").extract_first();
+        item["profit"] = volumeInfo.css("p > span#yjsy").extract_first();
 
         yield item
 
