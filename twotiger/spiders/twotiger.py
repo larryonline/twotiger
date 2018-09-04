@@ -3,7 +3,7 @@ import scrapy
 
 
 class TwoTigerSpider(scrapy.Spider):
-    name = "books"
+    name = "TwoTiger"
     allowed_domains = ["books.toscrape.com"]
     start_urls = [
         'http://books.toscrape.com/',
